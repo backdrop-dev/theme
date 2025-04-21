@@ -99,7 +99,7 @@ class Carbon implements ImageGrabber {
 
 		// Types to locate image. Custom types must implement the `Type`
 		// contract to work.
-		$this->registered_types = apply_filters( 'Backdrop\Theme/carbon/types', [
+		$this->registered_types = apply_filters( 'backdrop/theme/carbon/types', [
 			'attached' => Attached::class,
 			'featured' => Featured::class,
 			'meta'     => Meta::class,
