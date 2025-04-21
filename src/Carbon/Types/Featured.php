@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Featured location type class.
