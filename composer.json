@@ -1,7 +1,10 @@
 {
     "name": "backdrop-dev/theme",
     "description": "Backdrop Theme is a collection of helper functions and filters to aid in theme development.\n",
-    "keywords": [ "classicpress","wordpress" ],
+    "keywords": [
+        "classicpress",
+        "wordpress"
+    ],
     "homepage": "https://github.com/backdrop-dev/theme",
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -14,13 +17,15 @@
     ],
     "autoload": {
         "psr-4": {
-          "Backdrop\\Theme\\": "src/"
-		},
-		"files": [
+            "Backdrop\\Theme\\": "src/"
+        },
+        "files": [
             "src/bootstrap-theme.php"
-		]
+        ]
     },
     "require": {
-        "php": ">=7.1"
+        "php": ">=7.4",
+        "backdrop-dev/framework": "^2.0",
+        "backdrop-dev/template-helpers": "^1.0.1"
     }
 }
