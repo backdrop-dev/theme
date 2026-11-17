@@ -28,6 +28,6 @@ class Provider extends ServiceProvider {
 	 * @return void
 	 */
 	public function boot(): void {
-		require_once 'bootstrap-filters.php';
+		require_once __DIR__ . '/bootstrap-filters.php';
 	}
 }

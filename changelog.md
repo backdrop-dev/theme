@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.6 - November 17, 2026
+Fixed
+* `Backdrop\Theme\is_plugin_or_class_active()` was hooked to `init`. It needs a plugin path, so on every request it was called with an empty string, did nothing useful and loaded `wp-admin/includes/plugin.php` on the front end. It is a helper to call from your own code, so the hook was removed.
+* The package's own files are now included with `__DIR__`, instead of relying on PHP's relative include path.
+
+Changed
+* Requires `backdrop-dev/framework` ^2.0 and `backdrop-dev/template-helpers` ^1.0.1, which the package uses but didn't declare. PHP 7.4 or later.
+
 ## 1.0.3 - July 27, 2023
 Fixed
 * Make sure that single post is using h1
