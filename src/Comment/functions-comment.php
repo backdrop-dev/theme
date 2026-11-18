@@ -340,7 +340,9 @@ function render_reply_link( array $args = [] ): string {
 
 	unset( $args['before'], $args['after'] );
 
-	$html = get_comment_reply_link( $args );
+	// `get_comment_reply_link()` returns null when there's no reply link, for example at the
+	// maximum thread depth or when comments are closed.
+	$html = (string) get_comment_reply_link( $args );
 
 	if ( $html ) {
 
@@ -354,7 +356,7 @@ function render_reply_link( array $args = [] ): string {
 		$html = $before . $html . $after;
 	}
 
-	return apply_filters( 'backdrop/theme/comment/reply_link', $html );
+	return (string) apply_filters( 'backdrop/theme/comment/reply_link', $html );
 }
 
 /**

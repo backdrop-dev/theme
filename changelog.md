@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.7 - November 17, 2026
+Fixed
+* `Backdrop\Theme\Comment\render_reply_link()` and `display_reply_link()` caused a fatal error ("Return value must be of type string, null returned") on comments at the maximum thread depth, and on any comment when comments are closed, because `get_comment_reply_link()` returns null there. They now return an empty string.
+
 ## 1.0.6 - November 17, 2026
 Fixed
 * `Backdrop\Theme\is_plugin_or_class_active()` was hooked to `init`. It needs a plugin path, so on every request it was called with an empty string, did nothing useful and loaded `wp-admin/includes/plugin.php` on the front end. It is a helper to call from your own code, so the hook was removed.
