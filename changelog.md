@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.0.8 - November 23, 2026
 Fixed
 * A `%` in a post title or the site title broke the page. `Backdrop\Theme\Entry\render_title()` and `Backdrop\Theme\Site\render_site_title()` passed the title to `render_permalink()` and `render_home_link()` as their `text`, which those functions use as a `sprintf()` format. A title such as `100%^` threw a `ValueError` on PHP 8 and cut the page off at that post, and one with `%s` or `% d` printed the wrong text. The `%` is now doubled before the title is passed in.
 
