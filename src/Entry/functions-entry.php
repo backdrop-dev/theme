@@ -94,7 +94,11 @@ function render_title( array $args = [] ): string {
     $text = sprintf( $args['text'], $is_single ? single_post_title( '', false ) : the_title( '', '', false ) );
 
     if ( $args['link'] ) {
-        $text = render_permalink( [ 'text' => $text ] );
+
+        // `render_permalink()` uses its `text` as a `sprintf()` format, so a `%` in the
+        // title has to be doubled or the title can break the page (PHP 8 throws a
+        // `ValueError` for something like `%^`).
+        $text = render_permalink( [ 'text' => str_replace( '%', '%%', $text ) ] );
     }
 
     $html = sprintf(

@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+Fixed
+* A `%` in a post title or the site title broke the page. `Backdrop\Theme\Entry\render_title()` and `Backdrop\Theme\Site\render_site_title()` passed the title to `render_permalink()` and `render_home_link()` as their `text`, which those functions use as a `sprintf()` format. A title such as `100%^` threw a `ValueError` on PHP 8 and cut the page off at that post, and one with `%s` or `% d` printed the wrong text. The `%` is now doubled before the title is passed in.
+
 ## 1.0.7 - November 17, 2026
 Fixed
 * `Backdrop\Theme\Comment\render_reply_link()` and `display_reply_link()` caused a fatal error ("Return value must be of type string, null returned") on comments at the maximum thread depth, and on any comment when comments are closed, because `get_comment_reply_link()` returns null there. They now return an empty string.

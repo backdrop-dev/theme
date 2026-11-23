@@ -48,8 +48,10 @@ function render_site_title( array $args = [] ): string {
 	$title = get_bloginfo( 'name', 'display' );
 
 	if ( $title ) {
+		// `render_home_link()` uses its `text` as a `sprintf()` format, so a `%` in the
+		// site title has to be doubled.
 		$link = render_home_link( [
-			'text' => $title,
+			'text' => str_replace( '%', '%%', $title ),
 			'class' => $args['link_class']
 		] );
 
